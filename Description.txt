@@ -1,0 +1,26 @@
+FreeSurfer version: Fs6
+Download the data: https://osf.io/wzqmg/
+
+Register the following 8 files into the fsaverage5 space:
+lh.area        lh.curv        lh.jacobian_white      lh.sulc
+lh.thickness lh.volume   lh.white                    lh.labels.DKT31.manual.annot
+
+
+HLN-12-2: lh.area    lh.volume    lh.jacobian_white
+                 can't match the surface （148208,146833）
+OASIS-20-1： lh.labels.DKT31.manual.annot
+                       here is a problem with the registration of the .annot file， can't allocate memory
+Twins-2-1/Twins-2-2: 
+                       File missing: lh.area lh.volume lh.jacobian_white
+
+
+
+
+template to fsaverage5 space command: mri_surf2surf
+
+example 1:   mri_surf2surf --srcsubject Afterthought-1 --sval thickness --src_type curv --trgsubject fsaverage5 --trgsurfval /home/tj/application/freesurfer/subjects/Afterthought-1-target/thickness --trg_type curv --hemi rh
+
+example  2:  mri_surf2surf --srcsubject OASIS-TRT-20-1 --trgsubject fsaverage5 --hemi lh --sval-annot /home/tj/application/freesurfer/subjects/OASIS-TRT-20-1/label/lh.labels.DKT31.manual.annot  --tval  /home/tj/application/freesurfer/subjects/min_template/OASIS-TRT-20-1-target/lh.labels.DKT31.manual.annot
+
+
+
